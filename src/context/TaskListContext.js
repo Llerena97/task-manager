@@ -5,21 +5,34 @@ export const TaskListContext = createContext()
 
 const TaskListContextProvider = props => {
   const [tasks, setTasks] = useState([{title: 'read a book', id: 1}, {title: 'go to run', id: 2}])
+  const [editItem, setEditItem] = useState(null)
 
   const addTask = title => {
     setTasks([...tasks, {title, id: uuid()}])
+  }
+
+  const editTask = (title, id) => {
+    console.log(id)
+    const newTasks = tasks.map(task => task.id === id ? {title, id} : task)
+    setTasks(newTasks)
+    setEditItem(null)
   }
   
   const removeTask = id => {
     setTasks(tasks.filter(task => task.id !== id))
   }
 
-  const clearList = id => {
+  const clearList = () => {
     setTasks([])
   }
 
+  const findItem = id => {
+    const item = tasks.find(task => task.id === id)
+    setEditItem(item)
+  }
+
   return <TaskListContext.Provider
-    value={{tasks, addTask, removeTask, clearList}}
+    value={{tasks, editItem, addTask, removeTask, clearList, findItem, editTask}}
   >
     {props.children}
   </TaskListContext.Provider>

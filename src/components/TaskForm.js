@@ -1,10 +1,19 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 
 import {TaskListContext} from './../context/TaskListContext'
 
 const TaskForm = () => {
-  const {addTask, clearList} = useContext(TaskListContext)
+  const {addTask, clearList, editItem, editTask} = useContext(TaskListContext)
   const [title, setTitle] = useState('')
+  
+  useEffect(() => {
+    console.log(editItem)
+    if (editItem) {
+      setTitle(editItem.title)
+    } else {
+      setTitle('')
+    }
+  }, [editItem])
 
   const handleChange = e => {
     setTitle(e.target.value)
@@ -12,8 +21,12 @@ const TaskForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    addTask(title)
-    setTitle('')
+    if (!editItem) {
+      addTask(title)
+      setTitle('')
+    } else {
+      editTask(title, editItem.id)
+    }
   }
 
   return (
@@ -27,7 +40,7 @@ const TaskForm = () => {
         required
       />
       <div className="buttons">
-        <button type="submit" className="btn add-task-btn">Add Task</button>
+        <button type="submit" className="btn add-task-btn">{editItem ? 'Edit Task' : 'Add Task'}</button>
         <button className="btn clear-btn" onClick={() => clearList()}>Clear</button>
       </div>
     </form>

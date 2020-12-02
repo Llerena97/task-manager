@@ -2,13 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .container {
-  background: linear-gradient(100deg, rgb(182, 40, 111) 50%, #ac2066 0);
+  background: linear-gradient(100deg, #1E7CF7 50%, #1CB8ED 0);
   width: 100%;
   height: 100vh;
   display: flex;
@@ -102,11 +97,12 @@
 
 .add-task-btn {
   min-width: 100px;
-  background-color: #790e43;
+  background-color: #1E7CF7;
   color: #ccc;
   border: none;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
+  font-weight: bold;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   outline: none;
@@ -147,11 +143,12 @@
 .clear-btn {
   width: 100px;
   height: 35px;
-  background-color: #790e43;
+  background-color: #1E7CF7;
   color: #ccc;
   border: none;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
+  font-weight: bold;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   outline: none;
