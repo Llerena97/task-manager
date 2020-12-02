@@ -7,7 +7,6 @@ const TaskForm = () => {
   const [title, setTitle] = useState('')
   
   useEffect(() => {
-    console.log(editItem)
     if (editItem) {
       setTitle(editItem.title)
     } else {
